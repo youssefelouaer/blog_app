@@ -12,7 +12,7 @@ class PostController extends Controller
 
     public function index()
     {
-      return PostResource::collection(Post::with('user')->get()) ;
+      return PostResource::collection(Post::with('user')->get()) ; //user is a function defined in Post Model (user hasMany posts)
     }
 
     public function store(Request $request , Post $post)

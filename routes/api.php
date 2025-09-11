@@ -26,8 +26,16 @@ Route::get('/comments', [CommentController::class, 'index']);
 // Route::get('/comments', [\App\Http\Controllers\CommentController::class, 'destroy']);
 
 
-Route::get('/posts', [PostController::class, 'index']);
-Route::post('/posts', [\App\Http\Controllers\PostController::class, 'store']);
-Route::put('/posts/{post}', [\App\Http\Controllers\PostController::class, 'update']);
-Route::delete('/posts/{post}', [\App\Http\Controllers\PostController::class, 'destroy']); //{post} specifies a certain instance of post
+
+
+Route::resource('posts',PostController::class); //or
+
+// Route::get('/posts', [PostController::class, 'index']);
+// Route::post('/posts', [\App\Http\Controllers\PostController::class, 'store']);
+// Route::put('/posts/{post}', [\App\Http\Controllers\PostController::class, 'update']);
+// Route::delete('/posts/{post}', [\App\Http\Controllers\PostController::class, 'destroy']); 
+
+
+
+//{post} specifies a certain instance of post
 
