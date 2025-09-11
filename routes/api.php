@@ -21,13 +21,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/comments', [CommentController::class, 'index']);
-// Route::get('/comments', [\App\Http\Controllers\CommentController::class, 'create']);
+// Route::post('/comments', [\App\Http\Controllers\CommentController::class, 'store']);
 // Route::get('/comments', [\App\Http\Controllers\CommentController::class, 'update']);
-// Route::get('/comments', [\App\Http\Controllers\CommentController::class, 'delete']);
+// Route::get('/comments', [\App\Http\Controllers\CommentController::class, 'destroy']);
 
 
 Route::get('/posts', [PostController::class, 'index']);
-// Route::get('/posts', [\App\Http\Controllers\PostController::class, 'create']);
-// Route::get('/posts', [\App\Http\Controllers\PostController::class, 'update']);
-// Route::get('/posts', [\App\Http\Controllers\PostController::class, 'delete']);
+Route::post('/posts', [\App\Http\Controllers\PostController::class, 'store']);
+Route::put('/posts/{post}', [\App\Http\Controllers\PostController::class, 'update']);
+Route::delete('/posts/{post}', [\App\Http\Controllers\PostController::class, 'destroy']); //{post} specifies a certain instance of post
 
