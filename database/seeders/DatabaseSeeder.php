@@ -19,11 +19,7 @@ class DatabaseSeeder extends Seeder
     ->count(3)
     ->has(
         Post::factory()->count(rand(1, 5))
-    ->has(
-        Comment::factory()->count(rand(5, 10))
         )
- 
-    )
     ->create();
 
 }

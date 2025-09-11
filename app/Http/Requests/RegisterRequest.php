@@ -12,7 +12,7 @@ class RegisterRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return true;
+        return false;
     }
 
     /**
@@ -23,16 +23,7 @@ class RegisterRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string' ,
-            'email' => 'required|email|unique:users' ,
-            'password' => 'required|confirmed'
+           
         ];
-    }
-
-    public function getData()
-    {
-        $data = $this->validated() ;
-        $data['password'] = Hash::make($data['password']);
-        return $data;
     }
 }
