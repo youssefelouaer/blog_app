@@ -20,10 +20,4 @@ use App\Http\Controllers\Auth\RegisterController;
 Route::get('/', function () {
     return view('welcome');
 });
-// Route::apiResource('api/posts',PostController::class);
-// Route::prefix('auth')->group(function()
-// // {
-// //     Route::post('/login',LoginController::class);
-// //     Route::post('/logout',LogoutController::class);
-// //     Route::post('/register',RegisterController::class);
-// // });
+

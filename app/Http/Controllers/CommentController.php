@@ -10,7 +10,7 @@ class CommentController extends Controller
 {
     public function index()
     {
-        return Comment::all() ;
+        CommentResource::collection(Post::with('post')->get()) ; ;
     }
 
       public function store(Request $request , Comment $comment)
@@ -36,6 +36,4 @@ class CommentController extends Controller
 
 }
 
-//Defining routes in api.php 
-// Resources
-//CRUD ops
+

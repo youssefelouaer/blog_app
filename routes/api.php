@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\Auth\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,7 +21,20 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/comments', [CommentController::class, 'index']);
+
+    //middleware needed because not every person can logout
+Route::post('/register', [AuthController::class, 'register']);
+Route::post('/login', [AuthController::class, 'login']);
+Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
+
+
+Route::middleware('auth:sanctum')->group(function()
+        {
+        Route::resource('comments', CommentController::class);
+        Route::resource('posts',PostController::class);
+        }
+);
+
 // Route::post('/comments', [\App\Http\Controllers\CommentController::class, 'store']);
 // Route::get('/comments', [\App\Http\Controllers\CommentController::class, 'update']);
 // Route::get('/comments', [\App\Http\Controllers\CommentController::class, 'destroy']);
@@ -28,7 +42,7 @@ Route::get('/comments', [CommentController::class, 'index']);
 
 
 
-Route::resource('posts',PostController::class); //or
+ //or
 
 // Route::get('/posts', [PostController::class, 'index']);
 // Route::post('/posts', [\App\Http\Controllers\PostController::class, 'store']);
